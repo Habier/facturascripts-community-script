@@ -1,0 +1,53 @@
+{
+  "name": "FacturaScripts",
+  "slug": "facturascripts",
+  "categories": [
+    25
+  ],
+  "date_created": "2026-10-07",
+  "type": "ct",
+  "updateable": false,
+  "privileged": false,
+  "interface_port": 80,
+  "documentation": "https://facturascripts.com/publicaciones/instalacion-de-facturascripts-2020-635",
+  "website": "https://facturascripts.com/",
+  "repository": "https://github.com/NeoRazorX/facturascripts",
+  "logo": "https://upload.wikimedia.org/wikipedia/commons/d/de/Logo-FacturaScripts.png",
+  "description": "FacturaScripts is an open-source ERP and accounting platform for invoicing, purchasing, inventory, customer management and business reporting.",
+  "install_methods": [
+    {
+      "type": "default",
+      "script": "ct/facturascripts.sh",
+      "config_path": "/opt/facturascripts/config.php",
+      "resources": {
+        "cpu": 2,
+        "ram": 2048,
+        "hdd": 20,
+        "os": "Debian",
+        "version": "13"
+      }
+    }
+  ],
+  "default_credentials": {
+    "username": null,
+    "password": null
+  },
+  "notes": [
+    {
+      "text": "Experimental and not production-ready: real Proxmox installation, update, backup and restore testing is still pending.",
+      "type": "warning"
+    },
+    {
+      "text": "The service uses HTTP without TLS. Keep it on a trusted network, complete setup at http://<IP>, and replace any default credentials immediately.",
+      "type": "info"
+    },
+    {
+      "text": "Core files are hardened as read-only to Apache, which may block the built-in updater. Updates and rollback are unverified; take a full container backup first.",
+      "type": "warning"
+    },
+    {
+      "text": "Backups must include the MariaDB database and /opt/facturascripts/config.php, Plugins, MyFiles and Dinamic until restore behavior is verified.",
+      "type": "warning"
+    }
+  ]
+}

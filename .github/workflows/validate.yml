@@ -1,0 +1,24 @@
+name: Validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check Bash syntax
+        run: bash -n ct/*.sh install/*.sh
+
+      - name: Run ShellCheck
+        run: shellcheck ct/*.sh install/*.sh
+
+      - name: Validate JSON
+        run: jq empty json/*.json
