@@ -45,7 +45,7 @@ description
 msg_ok "Completed Successfully!\n"
 echo -e "${CREATING}${GN}${APP} setup has been successfully initialized!${CL}"
 echo -e "${INFO}${YW}Complete the setup wizard using the database credentials shown above.${CL}"
-echo -e "${WARN}${RD}After the wizard, hardening is still REQUIRED. Run inside the container as root:${CL}"
+echo -e "${INFO}${RD}After the wizard, hardening is still REQUIRED. Run inside the container as root:${CL}"
 echo -e "${TAB}/usr/local/sbin/facturascripts-harden-permissions"
 echo -e "${INFO}${YW}Access it using the following URL:${CL}"
 echo -e "${GATEWAY}${BGN}http://${IP}${CL}"

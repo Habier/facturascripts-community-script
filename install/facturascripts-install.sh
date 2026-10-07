@@ -153,7 +153,7 @@ echo -e "${TAB}Database host: localhost"
 echo -e "${TAB}Database name: ${MARIADB_DB_NAME}"
 echo -e "${TAB}Database user: ${MARIADB_DB_USER}"
 echo -e "${TAB}Database password: ${MARIADB_DB_PASS}"
-echo -e "${WARN}${RD}SECURITY ACTION REQUIRED after the web wizard:${CL}"
+echo -e "${INFO}${RD}SECURITY ACTION REQUIRED after the web wizard:${CL}"
 echo -e "${TAB}Run as root: /usr/local/sbin/facturascripts-harden-permissions"
 echo -e "${TAB}Until then, Apache can replace files in /opt/facturascripts."
 
