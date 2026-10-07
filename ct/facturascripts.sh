@@ -13,7 +13,7 @@ else
     echo "Error: failed to download a non-empty Community Scripts core from ${_cs_boot_url}" >&2
     exit 1
   fi
-  # shellcheck disable=SC1090
+  # shellcheck disable=SC1091
   source /dev/stdin <<<"$_cs_boot_content" || {
     echo "Error: failed to load the downloaded Community Scripts core from ${_cs_boot_url}" >&2
     exit 1
