@@ -141,7 +141,10 @@ if ! systemctl is-active --quiet apache2; then
   msg_error "Apache is not active after configuration"
   exit 1
 fi
-http_status="$(curl -sS -o /dev/null -w '%{http_code}' --max-time 15 http://127.0.0.1/)"
+if ! http_status="$(curl -sS -o /dev/null -w '%{http_code}' --connect-timeout 3 --max-time 10 --retry 4 --retry-connrefused --retry-delay 1 --retry-max-time 20 http://127.0.0.1/)"; then
+  msg_error "FacturaScripts HTTP check could not connect to http://127.0.0.1/"
+  exit 1
+fi
 if [[ ! "$http_status" =~ ^(2|3)[0-9][0-9]$ ]]; then
   msg_error "FacturaScripts HTTP check failed with status ${http_status}"
   exit 1
