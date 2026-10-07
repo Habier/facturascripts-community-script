@@ -22,7 +22,7 @@ if ! dpkg --compare-versions "$php_version" ge "8.1"; then
   msg_error "FacturaScripts requires PHP 8.1 or newer; found ${php_version:-unknown}"
   exit 1
 fi
-required_php_modules=(bcmath curl fileinfo gd mbstring openssl simplexml soap zip)
+required_php_modules=(bcmath curl dom fileinfo gd json mbstring mysqli openssl simplexml soap zip)
 loaded_php_modules="$(php -m | tr '[:upper:]' '[:lower:]')"
 for module in "${required_php_modules[@]}"; do
   if ! grep -qx "$module" <<<"$loaded_php_modules"; then
