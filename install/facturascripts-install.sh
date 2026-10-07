@@ -48,22 +48,15 @@ msg_info "Verifying FacturaScripts files"
   msg_error "Downloaded archive is missing expected file: index.php"
   exit 1
 }
-if [[ ! -f /opt/facturascripts/htaccess-sample && ! -f /opt/facturascripts/.htaccess ]]; then
-  msg_error "Downloaded archive contains neither htaccess-sample nor .htaccess"
+if [[ ! -s /opt/facturascripts/htaccess-sample ]]; then
+  msg_error "Downloaded archive is missing expected file: htaccess-sample"
   exit 1
 fi
 msg_ok "Verified FacturaScripts files"
 
 msg_info "Configuring FacturaScripts"
-if [[ -f /opt/facturascripts/.htaccess ]]; then
-  msg_warn "Keeping existing /opt/facturascripts/.htaccess"
-else
-  mv /opt/facturascripts/htaccess-sample /opt/facturascripts/.htaccess
-fi
-[[ -s /opt/facturascripts/.htaccess ]] || {
-  msg_error "FacturaScripts .htaccess is missing or empty"
-  exit 1
-}
+# Keep htaccess-sample in place. The web installer reads it and creates the
+# final .htaccess after applying the selected installation route.
 chown -R root:www-data /opt/facturascripts
 find /opt/facturascripts -type d -exec chmod 750 {} +
 find /opt/facturascripts -type f -exec chmod 640 {} +
